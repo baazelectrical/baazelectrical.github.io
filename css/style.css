@@ -243,46 +243,80 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(45deg, #007bff, #ff6b6b);
   padding: 2rem 0;
   position: relative;
-  overflow: hidden;
+  z-index: 1;
+  overflow: visible;
 }
-.cta::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
-  transform: skewY(-3deg);
+.cta .container {
+  position: relative;
+  z-index: 2;
 }
 .cta h3 {
   color: white;
+  margin-bottom: 1rem;
 }
-.cta h3 a {
+.cta h3 .phone-link {
+  display: inline-block;
   color: white;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.1);
 }
-.cta h3 a:hover {
-  color: #ffc107;
+.cta h3 .phone-link:hover, .cta h3 .phone-link:focus {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
-.cta .btn-light.quote-btn {
+.cta .quote-btn {
+  display: inline-block;
   background: white;
-  color: #ff6b6b;
+  color: #007bff;
   font-weight: 600;
   padding: 0.8rem 2rem;
   border-radius: 30px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.cta .btn-light.quote-btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  background: #ff6b6b;
-  color: white;
+.cta .quote-btn:hover, .cta .quote-btn:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  background: rgb(242.25, 242.25, 242.25);
+}
+.cta .quote-btn:active {
+  transform: translateY(1px);
 }
 
+@media (max-width: 768px) {
+  .cta {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  .cta h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  .cta h3 .phone-link {
+    display: inline-block;
+    margin: 0.5rem auto;
+    padding: 0.8rem 1.5rem;
+    width: auto;
+  }
+  .cta .quote-btn {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  .cta .quote-btn:active {
+    transform: translateY(2px);
+  }
+}
 .service-card {
   background: var(--card-bg);
   padding: 2rem;
@@ -734,22 +768,6 @@ footer h5 {
 footer p {
   color: rgba(255, 255, 255, 0.7);
 }
-footer .social-icons a {
-  display: inline-block;
-  width: 36px;
-  height: 36px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  transition: all 0.3s ease;
-}
-footer .social-icons a:hover {
-  background: #007bff;
-  transform: translateY(-3px);
-}
 footer .footer-links {
   list-style: none;
   padding-left: 0;
@@ -911,29 +929,21 @@ footer hr {
   }
   .cta h3 {
     font-size: 1.2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
   .cta h3 .phone-link {
     display: inline-block;
     margin: 0.5rem auto;
     padding: 0.8rem 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 30px;
     width: auto;
-    text-align: center;
-    position: relative;
-    z-index: 10;
-  }
-  .cta h3 .phone-link:active {
-    background: rgba(255, 255, 255, 0.2);
   }
   .cta .quote-btn {
+    display: block;
     width: 100%;
     margin-top: 1rem;
     padding: 1rem;
     font-size: 1.1rem;
-    position: relative;
-    z-index: 10;
+    text-align: center;
   }
   .cta .quote-btn:active {
     transform: translateY(2px);
@@ -996,9 +1006,6 @@ footer hr {
   }
   footer {
     text-align: center;
-  }
-  footer .social-icons {
-    margin-bottom: 2rem;
   }
   footer .footer-links,
   footer .footer-contact {
