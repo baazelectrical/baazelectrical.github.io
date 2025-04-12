@@ -1,127 +1,95 @@
 # BAAZ Electrical Services Website
 
-A modern, professional website for BAAZ Electrical Services, showcasing their electrical services in the Riverland area. This website features a responsive design, interactive elements, and a clean, professional layout.
+Official website for BAAZ Electrical Services, serving the Riverland area with professional electrical solutions.
 
-## Features
+## 🌐 Website URL
 
-- **Responsive Design**: Fully responsive layout that works on all devices
-- **Modern UI**: Clean, professional design with smooth animations
-- **Interactive Elements**: Animated service cards, testimonials, and statistics
-- **Contact Form**: User-friendly contact form with validation
-- **Service Showcase**: Comprehensive display of electrical services
-- **Testimonials**: Customer testimonials section
-- **Mobile-Friendly Navigation**: Easy-to-use navigation on all devices
-- **Professional Styling**: Advanced SCSS styling with variables and mixins
-- **Performance Optimized**: Fast loading and smooth scrolling
-- **SEO Ready**: Properly structured HTML for search engine optimization
+Visit our website at: [https://baazelectrical.github.io](https://baazelectrical.github.io)
 
-## Setup Instructions
+## 📋 Features
 
-1. Install dependencies:
-```bash
-npm install
+- Responsive design for all devices
+- Dark/Light mode toggle
+- Service showcase with detailed descriptions
+- Contact form
+- Interactive Google Maps integration
+- Animated sections using AOS (Animate On Scroll)
+- Mobile-friendly navigation
+
+## 🛠️ Technologies Used
+
+- HTML5
+- CSS3/SCSS
+- JavaScript
+- Bootstrap 5
+- Font Awesome Icons
+- AOS Library
+- Google Maps API
+
+## 🚀 Local Development
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/baazelectrical/baazelectrical.github.io.git
+   cd baazelectrical.github.io
+   ```
+
+2. Open `index.html` in your browser or use a local server:
+   ```bash
+   # Using Python
+   python -m http.server 8000
+   
+   # Using Node.js
+   npx serve
+   ```
+
+## 📝 Making Updates
+
+1. Make changes to the relevant files:
+   - `index.html` for main page content
+   - `pages/*.html` for additional pages
+   - `css/style.css` for styling
+   - `js/main.js` for functionality
+
+2. Test changes locally
+
+3. Commit and push changes:
+   ```bash
+   git add .
+   git commit -m "Description of changes"
+   git push origin main
+   ```
+
+## 📁 Project Structure
+
 ```
-
-2. Start the SCSS compiler:
-```bash
-npm start
-```
-
-3. Open `index.html` in your browser to view the website.
-
-## Project Structure
-
-```
-baaz-electrical-services/
-├── index.html              # Main HTML file
-├── scss/
-│   └── main.scss           # Main SCSS file with all styles
+baazelectrical.github.io/
+├── index.html
 ├── css/
-│   └── style.css           # Compiled CSS file
+│   └── style.css
 ├── js/
-│   └── main.js             # JavaScript for interactivity
-└── images/
-    ├── hero-bg.jpg         # Hero section background (to be added)
-    └── map-bg.jpg          # Map section background (to be added)
+│   └── main.js
+├── images/
+│   └── ...
+└── pages/
+    └── services.html
 ```
 
-## Technologies Used
+## 🔄 Maintenance
 
-- **HTML5**: Semantic markup for better structure and SEO
-- **CSS3/SCSS**: Advanced styling with variables, mixins, and animations
-- **JavaScript**: Interactive features and animations
-- **Bootstrap 5**: Responsive grid system and components
-- **Font Awesome**: Professional icons
-- **Intersection Observer API**: For scroll-based animations
+- Regularly update content and images
+- Check all links are working
+- Test contact form functionality
+- Verify Google Maps integration
+- Ensure mobile responsiveness
+- Update business hours and contact information as needed
 
-## Customization
+## 📱 Contact
 
-### Colors
-To change the website's color scheme, modify the variables in `scss/main.scss`:
-```scss
-$primary-color: #007bff;
-$secondary-color: #6c757d;
-$dark-color: #343a40;
-$light-color: #f8f9fa;
-$accent-color: #ffc107;
-```
+For website maintenance and updates, contact:
+- Email: baazelectrical@hotmail.com
+- Phone: 0412 794 330
 
-### Content
-- To add/modify services, edit the services section in `index.html`
-- To update testimonials, modify the testimonials section
-- To change contact information, update the contact section
+## 📄 License
 
-### Images
-Replace the placeholder images in the `images` directory:
-- `hero-bg.jpg`: Hero section background (recommended size: 1920x1080px)
-- `map-bg.jpg`: Map section background (recommended size: 1920x600px)
-
-## Contact Form
-
-The contact form is currently set up with a simulated submission. To make it functional:
-
-1. Set up a backend server (Node.js, PHP, etc.)
-2. Modify the form submission handling in `js/main.js`
-3. Add your server endpoint to handle the form data
-
-## Browser Support
-
-The website is compatible with:
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Opera (latest)
-
-## Performance Optimization
-
-The website includes several performance optimizations:
-- Lazy loading of images
-- Optimized animations using CSS transforms
-- Efficient JavaScript with debouncing and throttling
-- Minified CSS and JavaScript for production
-
-## Deployment
-
-To deploy the website:
-
-1. Build the production version:
-```bash
-npm run build
-```
-
-2. Upload the following files to your web server:
-   - `index.html`
-   - `css/style.css`
-   - `js/main.js`
-   - `images/` directory
-
-## Credits
-
-- Font Awesome for icons
-- Bootstrap for responsive framework
-- Google Fonts for typography
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details. 
+© 2024 BAAZ Electrical Services. All Rights Reserved. 
