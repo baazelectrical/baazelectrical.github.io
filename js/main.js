@@ -87,54 +87,68 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Enhanced form submission with validation and animation
+// Enhanced form submission with validation and AJAX
 const contactForm = document.getElementById('contactForm');
+const formMessage = document.getElementById('form-message');
 
-contactForm?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const formData = new FormData(contactForm);
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton.textContent;
-    
-    try {
-        submitButton.disabled = true;
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
         
-        // Simulate form submission (replace with actual API call)
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        const formData = new FormData(contactForm);
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
         
-        // Show success message
-        const successAlert = document.createElement('div');
-        successAlert.className = 'alert alert-success mt-3';
-        successAlert.textContent = 'Thank you for your message. We will get back to you soon!';
-        contactForm.appendChild(successAlert);
+        // Clear previous messages
+        formMessage.classList.add('d-none');
+        formMessage.textContent = '';
         
-        // Reset form
-        contactForm.reset();
-        
-        // Remove success message after 5 seconds
-        setTimeout(() => {
-            successAlert.remove();
-        }, 5000);
-    } catch (error) {
-        console.error('Error submitting form:', error);
-        
-        // Show error message
-        const errorAlert = document.createElement('div');
-        errorAlert.className = 'alert alert-danger mt-3';
-        errorAlert.textContent = 'An error occurred. Please try again later.';
-        contactForm.appendChild(errorAlert);
-        
-        // Remove error message after 5 seconds
-        setTimeout(() => {
-            errorAlert.remove();
-        }, 5000);
-    } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = originalButtonText;
-    }
-});
+        try {
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            
+            // Send AJAX request to PHP script
+            const response = await fetch('send_email.php', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            // Display response message
+            formMessage.classList.remove('d-none');
+            
+            if (response.ok) {
+                formMessage.classList.add('alert-success');
+                formMessage.classList.remove('alert-danger');
+                formMessage.textContent = result.message;
+                contactForm.reset();
+            } else {
+                formMessage.classList.add('alert-danger');
+                formMessage.classList.remove('alert-success');
+                formMessage.textContent = result.message || 'An error occurred. Please try again later.';
+            }
+            
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            
+            // Show error message
+            formMessage.classList.remove('d-none');
+            formMessage.classList.add('alert-danger');
+            formMessage.classList.remove('alert-success');
+            formMessage.textContent = 'An error occurred. Please try again later.';
+            
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.classList.add('d-none');
+            }, 5000);
+        }
+    });
+}
 
 // Enhanced service card animations
 const observerOptions = {
